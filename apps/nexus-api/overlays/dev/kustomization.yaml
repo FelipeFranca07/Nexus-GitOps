@@ -4,21 +4,22 @@ kind: Kustomization
 namespace: nexus-dev
 
 resources:
-  - ../../base
+- ../../base
 
 replicas:
-  - name: nexus-api
-    count: 1
+- count: 1
+  name: nexus-api
 
 images:
-  - name: ghcr.io/felipefranca07/nexus-api
-    newTag: latest
+- name: ghcr.io/felipefranca07/nexus-api
+  newName: ghcr.io/felipefranca07/nexus-api
+  newTag: sha-f090b8f
 
 patches:
-  - target:
-      kind: ConfigMap
-      name: nexus-api-config
-    patch: |-
-      - op: replace
-        path: /data/APP_VERSION
-        value: dev
+- patch: |-
+    - op: replace
+      path: /data/APP_VERSION
+      value: dev
+  target:
+    kind: ConfigMap
+    name: nexus-api-config
