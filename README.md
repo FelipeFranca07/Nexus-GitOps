@@ -1,7 +1,7 @@
 # Nexus GitOps
 
 Repositório de configuração declarativa (padrão **GitOps**) para a
-[`nexus-api`](https://github.com/FelipeFranca07/nexus-api), gerenciado
+[`nexus-api`](https://github.com/FelipeFranca07/Nexus-Api), gerenciado
 pelo **ArgoCD**. Este repositório é a fonte da verdade do estado desejado do
 cluster — nenhum deploy é feito com `kubectl apply` manual.
 
@@ -64,4 +64,4 @@ overlay no seu respectivo namespace.
 ## Repositório da aplicação
 
 Código-fonte, testes e pipeline de CI/CD ficam em
-[`nexus-api`](https://github.com/FelipeFranca07/nexus-api).
+[`nexus-api`](https://github.com/FelipeFranca07/Nexus-Api).

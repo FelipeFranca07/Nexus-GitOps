@@ -6,7 +6,7 @@ metadata:
 spec:
   project: nexus
   source:
-    repoURL: "https://github.com/FelipeFranca07/nexus-gitops.git"
+    repoURL: "https://github.com/FelipeFranca07/Nexus-GitOps.git"
     targetRevision: main
     path: argocd/applications
   destination:

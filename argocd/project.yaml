@@ -6,7 +6,7 @@ metadata:
 spec:
   description: Nexus demo project
   sourceRepos:
-    - "https://github.com/FelipeFranca07/nexus-gitops.git"
+    - "https://github.com/FelipeFranca07/Nexus-GitOps.git"
   destinations:
     - namespace: "nexus-*"
       server: "https://kubernetes.default.svc"
