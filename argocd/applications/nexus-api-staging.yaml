@@ -1,17 +1,17 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: taskflow-api-staging
+  name: nexus-api-staging
   namespace: argocd
 spec:
-  project: taskflow
+  project: nexus
   source:
-    repoURL: "https://github.com/FelipeFranca07/taskflow-gitops.git"
+    repoURL: "https://github.com/FelipeFranca07/nexus-gitops.git"
     targetRevision: main
-    path: apps/taskflow-api/overlays/staging
+    path: apps/nexus-api/overlays/staging
   destination:
     server: "https://kubernetes.default.svc"
-    namespace: taskflow-staging
+    namespace: nexus-staging
   syncPolicy:
     automated:
       prune: true

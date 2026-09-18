@@ -8,7 +8,7 @@
   <rect x="0" y="0" width="1200" height="640" fill="#ffffff"/>
 
   <!-- Title -->
-  <text x="600" y="34" text-anchor="middle" font-size="20" font-weight="700" fill="#1f2328">TaskFlow — CI/CD + GitOps Architecture</text>
+  <text x="600" y="34" text-anchor="middle" font-size="20" font-weight="700" fill="#1f2328">Nexus — CI/CD + GitOps Architecture</text>
 
   <!-- Developer -->
   <g>
@@ -19,10 +19,10 @@
   <line x1="94" y1="120" x2="170" y2="120" stroke="#57606a" stroke-width="1.5" marker-end="url(#arrow)"/>
   <text x="132" y="110" text-anchor="middle" font-size="11" fill="#57606a">git push</text>
 
-  <!-- taskflow-api repo box -->
+  <!-- nexus-api repo box -->
   <g>
     <rect x="170" y="70" width="330" height="220" rx="10" fill="#f6f8fa" stroke="#d0d7de" stroke-width="1.5"/>
-    <text x="335" y="94" text-anchor="middle" font-size="14" font-weight="700" fill="#1f2328">taskflow-api (GitHub)</text>
+    <text x="335" y="94" text-anchor="middle" font-size="14" font-weight="700" fill="#1f2328">nexus-api (GitHub)</text>
 
     <rect x="190" y="108" width="290" height="34" rx="6" fill="#ffffff" stroke="#8250df" stroke-width="1.2"/>
     <text x="335" y="130" text-anchor="middle" font-size="12" fill="#1f2328">GitHub Actions: lint + pytest</text>
@@ -50,19 +50,19 @@
     <rect x="590" y="80" width="170" height="70" rx="10" fill="#eaf5ea" stroke="#1a7f37" stroke-width="1.5"/>
     <text x="675" y="110" text-anchor="middle" font-size="13" font-weight="700" fill="#1f2328">GHCR</text>
     <text x="675" y="128" text-anchor="middle" font-size="10.5" fill="#57606a">ghcr.io/felipefranca07</text>
-    <text x="675" y="142" text-anchor="middle" font-size="10.5" fill="#57606a">taskflow-api:sha-*</text>
+    <text x="675" y="142" text-anchor="middle" font-size="10.5" fill="#57606a">nexus-api:sha-*</text>
   </g>
 
-  <!-- Arrow from taskflow-api to taskflow-gitops (commit/push) -->
+  <!-- Arrow from nexus-api to nexus-gitops (commit/push) -->
   <line x1="500" y1="234" x2="600" y2="234" stroke="#57606a" stroke-width="1.5" marker-end="url(#arrow)"/>
   <text x="550" y="224" text-anchor="middle" font-size="11" fill="#57606a">commit + push</text>
   <text x="550" y="250" text-anchor="middle" font-size="10" fill="#8c959f">(kustomize edit set image)</text>
 
-  <!-- taskflow-gitops repo box -->
+  <!-- nexus-gitops repo box -->
   <g>
     <rect x="600" y="180" width="300" height="110" rx="10" fill="#f6f8fa" stroke="#d0d7de" stroke-width="1.5"/>
-    <text x="750" y="202" text-anchor="middle" font-size="14" font-weight="700" fill="#1f2328">taskflow-gitops (GitHub)</text>
-    <text x="750" y="222" text-anchor="middle" font-size="11.5" fill="#1f2328">apps/taskflow-api/overlays/</text>
+    <text x="750" y="202" text-anchor="middle" font-size="14" font-weight="700" fill="#1f2328">nexus-gitops (GitHub)</text>
+    <text x="750" y="222" text-anchor="middle" font-size="11.5" fill="#1f2328">apps/nexus-api/overlays/</text>
     <text x="750" y="240" text-anchor="middle" font-size="11" fill="#57606a">dev · staging · prod (kustomize)</text>
     <text x="750" y="258" text-anchor="middle" font-size="11.5" fill="#1f2328">argocd/root-app.yaml (App of Apps)</text>
     <text x="750" y="274" text-anchor="middle" font-size="10" fill="#8c959f">fonte da verdade do estado desejado</text>
@@ -93,34 +93,34 @@
     <!-- dev ns -->
     <g>
       <rect x="200" y="410" width="280" height="150" rx="8" fill="#ffffff" stroke="#1a7f37" stroke-width="1.2"/>
-      <text x="340" y="434" text-anchor="middle" font-size="12.5" font-weight="700" fill="#1f2328">ns: taskflow-dev</text>
+      <text x="340" y="434" text-anchor="middle" font-size="12.5" font-weight="700" fill="#1f2328">ns: nexus-dev</text>
       <text x="340" y="454" text-anchor="middle" font-size="10.5" fill="#1a7f37">sync automático + self-heal</text>
       <text x="340" y="478" text-anchor="middle" font-size="10.5" fill="#57606a">Deployment (1 réplica)</text>
       <text x="340" y="496" text-anchor="middle" font-size="10.5" fill="#57606a">Service · ConfigMap</text>
-      <text x="340" y="514" text-anchor="middle" font-size="10.5" fill="#57606a">taskflow-api:sha-* (última)</text>
+      <text x="340" y="514" text-anchor="middle" font-size="10.5" fill="#57606a">nexus-api:sha-* (última)</text>
     </g>
 
     <!-- staging ns -->
     <g>
       <rect x="500" y="410" width="280" height="150" rx="8" fill="#ffffff" stroke="#9a6700" stroke-width="1.2"/>
-      <text x="640" y="434" text-anchor="middle" font-size="12.5" font-weight="700" fill="#1f2328">ns: taskflow-staging</text>
+      <text x="640" y="434" text-anchor="middle" font-size="12.5" font-weight="700" fill="#1f2328">ns: nexus-staging</text>
       <text x="640" y="454" text-anchor="middle" font-size="10.5" fill="#9a6700">sync automático · promoção via PR</text>
       <text x="640" y="478" text-anchor="middle" font-size="10.5" fill="#57606a">Deployment (2 réplicas)</text>
       <text x="640" y="496" text-anchor="middle" font-size="10.5" fill="#57606a">Service · ConfigMap</text>
-      <text x="640" y="514" text-anchor="middle" font-size="10.5" fill="#57606a">taskflow-api:sha-* (validada)</text>
+      <text x="640" y="514" text-anchor="middle" font-size="10.5" fill="#57606a">nexus-api:sha-* (validada)</text>
     </g>
 
     <!-- prod ns -->
     <g>
       <rect x="800" y="410" width="330" height="150" rx="8" fill="#ffffff" stroke="#bc4c00" stroke-width="1.2"/>
-      <text x="965" y="434" text-anchor="middle" font-size="12.5" font-weight="700" fill="#1f2328">ns: taskflow-prod</text>
+      <text x="965" y="434" text-anchor="middle" font-size="12.5" font-weight="700" fill="#1f2328">ns: nexus-prod</text>
       <text x="965" y="454" text-anchor="middle" font-size="10.5" fill="#bc4c00">sync manual (aprovação humana)</text>
       <text x="965" y="478" text-anchor="middle" font-size="10.5" fill="#57606a">Deployment (3 réplicas, limits maiores)</text>
       <text x="965" y="496" text-anchor="middle" font-size="10.5" fill="#57606a">Service · ConfigMap</text>
-      <text x="965" y="514" text-anchor="middle" font-size="10.5" fill="#57606a">taskflow-api:sha-* (promovida)</text>
+      <text x="965" y="514" text-anchor="middle" font-size="10.5" fill="#57606a">nexus-api:sha-* (promovida)</text>
     </g>
   </g>
 
   <!-- Legend -->
-  <text x="170" y="620" font-size="11" fill="#8c959f">CI (taskflow-api) nunca acessa o cluster diretamente — só o ArgoCD aplica mudanças, a partir do repo taskflow-gitops.</text>
+  <text x="170" y="620" font-size="11" fill="#8c959f">CI (nexus-api) nunca acessa o cluster diretamente — só o ArgoCD aplica mudanças, a partir do repo nexus-gitops.</text>
 </svg>

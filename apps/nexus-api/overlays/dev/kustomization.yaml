@@ -1,24 +1,24 @@
 apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 
-namespace: taskflow-staging
+namespace: nexus-dev
 
 resources:
   - ../../base
 
 replicas:
-  - name: taskflow-api
-    count: 2
+  - name: nexus-api
+    count: 1
 
 images:
-  - name: ghcr.io/felipefranca07/taskflow-api
+  - name: ghcr.io/felipefranca07/nexus-api
     newTag: latest
 
 patches:
   - target:
       kind: ConfigMap
-      name: taskflow-api-config
+      name: nexus-api-config
     patch: |-
       - op: replace
         path: /data/APP_VERSION
-        value: staging
+        value: dev

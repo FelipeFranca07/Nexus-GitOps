@@ -1,7 +1,7 @@
-# TaskFlow GitOps
+# Nexus GitOps
 
 Repositório de configuração declarativa (padrão **GitOps**) para a
-[`taskflow-api`](https://github.com/FelipeFranca07/taskflow-api), gerenciado
+[`nexus-api`](https://github.com/FelipeFranca07/nexus-api), gerenciado
 pelo **ArgoCD**. Este repositório é a fonte da verdade do estado desejado do
 cluster — nenhum deploy é feito com `kubectl apply` manual.
 
@@ -10,20 +10,20 @@ cluster — nenhum deploy é feito com `kubectl apply` manual.
 ## Estrutura
 
 ```
-apps/taskflow-api/
+apps/nexus-api/
 ├── base/                 # Deployment, Service e ConfigMap "puros"
 └── overlays/
-    ├── dev/              # namespace taskflow-dev · 1 réplica · atualizado automaticamente pelo CI
-    ├── staging/          # namespace taskflow-staging · 2 réplicas · promoção manual
-    └── prod/             # namespace taskflow-prod · 3 réplicas · limits maiores · promoção manual
+    ├── dev/              # namespace nexus-dev · 1 réplica · atualizado automaticamente pelo CI
+    ├── staging/          # namespace nexus-staging · 2 réplicas · promoção manual
+    └── prod/             # namespace nexus-prod · 3 réplicas · limits maiores · promoção manual
 
 argocd/
-├── project.yaml                      # AppProject "taskflow"
+├── project.yaml                      # AppProject "nexus"
 ├── root-app.yaml                     # App of Apps — aponta para argocd/applications
 └── applications/
-    ├── taskflow-api-dev.yaml         # sync automático (auto-sync + self-heal + prune)
-    ├── taskflow-api-staging.yaml     # sync automático
-    └── taskflow-api-prod.yaml        # sync manual (aprovação humana no ArgoCD)
+    ├── nexus-api-dev.yaml         # sync automático (auto-sync + self-heal + prune)
+    ├── nexus-api-staging.yaml     # sync automático
+    └── nexus-api-prod.yaml        # sync manual (aprovação humana no ArgoCD)
 ```
 
 ## Padrão App of Apps
@@ -36,7 +36,7 @@ novas apps só exigem um novo arquivo YAML nessa pasta.
 
 ## Fluxo de promoção
 
-- **dev**: o pipeline de CI da `taskflow-api` atualiza a tag da imagem no
+- **dev**: o pipeline de CI da `nexus-api` atualiza a tag da imagem no
   overlay `dev` a cada push no `main`. O ArgoCD sincroniza sozinho.
 - **staging/prod**: promoção é manual — copia-se a tag validada em dev para
   o `kustomization.yaml` do overlay correspondente via PR. Staging sincroniza
@@ -64,4 +64,4 @@ overlay no seu respectivo namespace.
 ## Repositório da aplicação
 
 Código-fonte, testes e pipeline de CI/CD ficam em
-[`taskflow-api`](https://github.com/FelipeFranca07/taskflow-api).
+[`nexus-api`](https://github.com/FelipeFranca07/nexus-api).

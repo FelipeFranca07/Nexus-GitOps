@@ -1,27 +1,27 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: taskflow-api
+  name: nexus-api
   labels:
-    app: taskflow-api
+    app: nexus-api
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: taskflow-api
+      app: nexus-api
   template:
     metadata:
       labels:
-        app: taskflow-api
+        app: nexus-api
     spec:
       containers:
-        - name: taskflow-api
-          image: ghcr.io/felipefranca07/taskflow-api:latest
+        - name: nexus-api
+          image: ghcr.io/felipefranca07/nexus-api:latest
           ports:
             - containerPort: 8000
           envFrom:
             - configMapRef:
-                name: taskflow-api-config
+                name: nexus-api-config
           readinessProbe:
             httpGet:
               path: /ready

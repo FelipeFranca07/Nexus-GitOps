@@ -1,12 +1,12 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: taskflow-root
+  name: nexus-root
   namespace: argocd
 spec:
-  project: taskflow
+  project: nexus
   source:
-    repoURL: "https://github.com/FelipeFranca07/taskflow-gitops.git"
+    repoURL: "https://github.com/FelipeFranca07/nexus-gitops.git"
     targetRevision: main
     path: argocd/applications
   destination:
