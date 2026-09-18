@@ -1,0 +1,126 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 640" font-family="Segoe UI, Helvetica, Arial, sans-serif">
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#57606a"/>
+    </marker>
+  </defs>
+
+  <rect x="0" y="0" width="1200" height="640" fill="#ffffff"/>
+
+  <!-- Title -->
+  <text x="600" y="34" text-anchor="middle" font-size="20" font-weight="700" fill="#1f2328">TaskFlow — CI/CD + GitOps Architecture</text>
+
+  <!-- Developer -->
+  <g>
+    <circle cx="70" cy="120" r="22" fill="#ddf4ff" stroke="#0969da" stroke-width="1.5"/>
+    <text x="70" y="126" text-anchor="middle" font-size="18">🧑‍💻</text>
+    <text x="70" y="158" text-anchor="middle" font-size="12" fill="#1f2328">dev</text>
+  </g>
+  <line x1="94" y1="120" x2="170" y2="120" stroke="#57606a" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <text x="132" y="110" text-anchor="middle" font-size="11" fill="#57606a">git push</text>
+
+  <!-- taskflow-api repo box -->
+  <g>
+    <rect x="170" y="70" width="330" height="220" rx="10" fill="#f6f8fa" stroke="#d0d7de" stroke-width="1.5"/>
+    <text x="335" y="94" text-anchor="middle" font-size="14" font-weight="700" fill="#1f2328">taskflow-api (GitHub)</text>
+
+    <rect x="190" y="108" width="290" height="34" rx="6" fill="#ffffff" stroke="#8250df" stroke-width="1.2"/>
+    <text x="335" y="130" text-anchor="middle" font-size="12" fill="#1f2328">GitHub Actions: lint + pytest</text>
+
+    <line x1="335" y1="142" x2="335" y2="154" stroke="#57606a" stroke-width="1.5" marker-end="url(#arrow)"/>
+
+    <rect x="190" y="154" width="290" height="34" rx="6" fill="#ffffff" stroke="#8250df" stroke-width="1.2"/>
+    <text x="335" y="176" text-anchor="middle" font-size="12" fill="#1f2328">Build &amp; push imagem Docker</text>
+
+    <line x1="335" y1="188" x2="335" y2="200" stroke="#57606a" stroke-width="1.5" marker-end="url(#arrow)"/>
+
+    <rect x="190" y="200" width="290" height="34" rx="6" fill="#ffffff" stroke="#8250df" stroke-width="1.2"/>
+    <text x="335" y="222" text-anchor="middle" font-size="12" fill="#1f2328">Bump tag no repo GitOps (dev)</text>
+
+    <text x="335" y="262" text-anchor="middle" font-size="10.5" fill="#57606a">azure-pipelines.yml / .gitlab-ci.yml</text>
+    <text x="335" y="278" text-anchor="middle" font-size="10.5" fill="#57606a">(equivalentes, como referência)</text>
+  </g>
+
+  <!-- Arrow to GHCR -->
+  <line x1="500" y1="176" x2="590" y2="120" stroke="#57606a" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <text x="555" y="140" text-anchor="middle" font-size="11" fill="#57606a">push</text>
+
+  <!-- GHCR -->
+  <g>
+    <rect x="590" y="80" width="170" height="70" rx="10" fill="#eaf5ea" stroke="#1a7f37" stroke-width="1.5"/>
+    <text x="675" y="110" text-anchor="middle" font-size="13" font-weight="700" fill="#1f2328">GHCR</text>
+    <text x="675" y="128" text-anchor="middle" font-size="10.5" fill="#57606a">ghcr.io/felipefranca07</text>
+    <text x="675" y="142" text-anchor="middle" font-size="10.5" fill="#57606a">taskflow-api:sha-*</text>
+  </g>
+
+  <!-- Arrow from taskflow-api to taskflow-gitops (commit/push) -->
+  <line x1="500" y1="234" x2="600" y2="234" stroke="#57606a" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <text x="550" y="224" text-anchor="middle" font-size="11" fill="#57606a">commit + push</text>
+  <text x="550" y="250" text-anchor="middle" font-size="10" fill="#8c959f">(kustomize edit set image)</text>
+
+  <!-- taskflow-gitops repo box -->
+  <g>
+    <rect x="600" y="180" width="300" height="110" rx="10" fill="#f6f8fa" stroke="#d0d7de" stroke-width="1.5"/>
+    <text x="750" y="202" text-anchor="middle" font-size="14" font-weight="700" fill="#1f2328">taskflow-gitops (GitHub)</text>
+    <text x="750" y="222" text-anchor="middle" font-size="11.5" fill="#1f2328">apps/taskflow-api/overlays/</text>
+    <text x="750" y="240" text-anchor="middle" font-size="11" fill="#57606a">dev · staging · prod (kustomize)</text>
+    <text x="750" y="258" text-anchor="middle" font-size="11.5" fill="#1f2328">argocd/root-app.yaml (App of Apps)</text>
+    <text x="750" y="274" text-anchor="middle" font-size="10" fill="#8c959f">fonte da verdade do estado desejado</text>
+  </g>
+
+  <!-- Arrow to ArgoCD -->
+  <line x1="900" y1="235" x2="980" y2="235" stroke="#57606a" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <text x="940" y="225" text-anchor="middle" font-size="11" fill="#57606a">watch</text>
+
+  <!-- ArgoCD -->
+  <g>
+    <rect x="980" y="180" width="180" height="110" rx="10" fill="#fff1e5" stroke="#bc4c00" stroke-width="1.5"/>
+    <text x="1070" y="204" text-anchor="middle" font-size="14" font-weight="700" fill="#1f2328">ArgoCD</text>
+    <text x="1070" y="224" text-anchor="middle" font-size="10.5" fill="#57606a">detecta mudança no</text>
+    <text x="1070" y="238" text-anchor="middle" font-size="10.5" fill="#57606a">repo GitOps e sincroniza</text>
+    <text x="1070" y="258" text-anchor="middle" font-size="10.5" fill="#57606a">o cluster automaticamente</text>
+  </g>
+
+  <!-- Arrow down to cluster -->
+  <line x1="1070" y1="290" x2="1070" y2="340" stroke="#57606a" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <text x="1070" y="330" text-anchor="middle" font-size="11" fill="#57606a">sync</text>
+
+  <!-- Kubernetes cluster -->
+  <g>
+    <rect x="170" y="360" width="990" height="230" rx="12" fill="#eef2ff" stroke="#3538cd" stroke-width="1.5"/>
+    <text x="665" y="386" text-anchor="middle" font-size="14" font-weight="700" fill="#1f2328">Cluster Kubernetes</text>
+
+    <!-- dev ns -->
+    <g>
+      <rect x="200" y="410" width="280" height="150" rx="8" fill="#ffffff" stroke="#1a7f37" stroke-width="1.2"/>
+      <text x="340" y="434" text-anchor="middle" font-size="12.5" font-weight="700" fill="#1f2328">ns: taskflow-dev</text>
+      <text x="340" y="454" text-anchor="middle" font-size="10.5" fill="#1a7f37">sync automático + self-heal</text>
+      <text x="340" y="478" text-anchor="middle" font-size="10.5" fill="#57606a">Deployment (1 réplica)</text>
+      <text x="340" y="496" text-anchor="middle" font-size="10.5" fill="#57606a">Service · ConfigMap</text>
+      <text x="340" y="514" text-anchor="middle" font-size="10.5" fill="#57606a">taskflow-api:sha-* (última)</text>
+    </g>
+
+    <!-- staging ns -->
+    <g>
+      <rect x="500" y="410" width="280" height="150" rx="8" fill="#ffffff" stroke="#9a6700" stroke-width="1.2"/>
+      <text x="640" y="434" text-anchor="middle" font-size="12.5" font-weight="700" fill="#1f2328">ns: taskflow-staging</text>
+      <text x="640" y="454" text-anchor="middle" font-size="10.5" fill="#9a6700">sync automático · promoção via PR</text>
+      <text x="640" y="478" text-anchor="middle" font-size="10.5" fill="#57606a">Deployment (2 réplicas)</text>
+      <text x="640" y="496" text-anchor="middle" font-size="10.5" fill="#57606a">Service · ConfigMap</text>
+      <text x="640" y="514" text-anchor="middle" font-size="10.5" fill="#57606a">taskflow-api:sha-* (validada)</text>
+    </g>
+
+    <!-- prod ns -->
+    <g>
+      <rect x="800" y="410" width="330" height="150" rx="8" fill="#ffffff" stroke="#bc4c00" stroke-width="1.2"/>
+      <text x="965" y="434" text-anchor="middle" font-size="12.5" font-weight="700" fill="#1f2328">ns: taskflow-prod</text>
+      <text x="965" y="454" text-anchor="middle" font-size="10.5" fill="#bc4c00">sync manual (aprovação humana)</text>
+      <text x="965" y="478" text-anchor="middle" font-size="10.5" fill="#57606a">Deployment (3 réplicas, limits maiores)</text>
+      <text x="965" y="496" text-anchor="middle" font-size="10.5" fill="#57606a">Service · ConfigMap</text>
+      <text x="965" y="514" text-anchor="middle" font-size="10.5" fill="#57606a">taskflow-api:sha-* (promovida)</text>
+    </g>
+  </g>
+
+  <!-- Legend -->
+  <text x="170" y="620" font-size="11" fill="#8c959f">CI (taskflow-api) nunca acessa o cluster diretamente — só o ArgoCD aplica mudanças, a partir do repo taskflow-gitops.</text>
+</svg>

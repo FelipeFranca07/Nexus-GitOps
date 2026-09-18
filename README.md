@@ -5,6 +5,8 @@ Repositório de configuração declarativa (padrão **GitOps**) para a
 pelo **ArgoCD**. Este repositório é a fonte da verdade do estado desejado do
 cluster — nenhum deploy é feito com `kubectl apply` manual.
 
+![Arquitetura CI/CD + GitOps](architecture.svg)
+
 ## Estrutura
 
 ```
