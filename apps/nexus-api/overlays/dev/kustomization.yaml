@@ -13,7 +13,7 @@ replicas:
 images:
 - name: ghcr.io/felipefranca07/nexus-api
   newName: ghcr.io/felipefranca07/nexus-api
-  newTag: sha-f090b8f
+  newTag: sha-6f8613d
 
 patches:
 - patch: |-
