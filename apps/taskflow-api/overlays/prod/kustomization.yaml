@@ -1,0 +1,37 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+
+namespace: taskflow-prod
+
+resources:
+  - ../../base
+
+replicas:
+  - name: taskflow-api
+    count: 3
+
+images:
+  - name: ghcr.io/felipefranca07/taskflow-api
+    newTag: latest
+
+patches:
+  - target:
+      kind: ConfigMap
+      name: taskflow-api-config
+    patch: |-
+      - op: replace
+        path: /data/APP_VERSION
+        value: prod
+  - target:
+      kind: Deployment
+      name: taskflow-api
+    patch: |-
+      - op: replace
+        path: /spec/template/spec/containers/0/resources
+        value:
+          requests:
+            cpu: 100m
+            memory: 128Mi
+          limits:
+            cpu: 500m
+            memory: 256Mi

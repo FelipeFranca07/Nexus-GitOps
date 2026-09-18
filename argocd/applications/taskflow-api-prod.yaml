@@ -1,0 +1,20 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: taskflow-api-prod
+  namespace: argocd
+spec:
+  project: taskflow
+  source:
+    repoURL: "https://github.com/FelipeFranca07/taskflow-gitops.git"
+    targetRevision: main
+    path: apps/taskflow-api/overlays/prod
+  destination:
+    server: "https://kubernetes.default.svc"
+    namespace: taskflow-prod
+  # Produção fica com sync manual: alguém precisa aprovar/clicar "Sync" no
+  # ArgoCD para promover uma nova revisão, mesmo que o repo já esteja
+  # atualizado. dev e staging sincronizam automaticamente; prod não.
+  syncPolicy:
+    syncOptions:
+      - CreateNamespace=true
